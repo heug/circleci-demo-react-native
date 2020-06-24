@@ -48,6 +48,7 @@ jobs:
     working_directory: ~/demo-react-native/android
     docker:
       - image: circleci/android:api-28-node8-alpha
+    resource_class: xlarge
     steps:
       - checkout:
           path: ~/demo-react-native
@@ -85,6 +86,7 @@ jobs:
   ios:
     macos:
       xcode: "9.0"
+    resource_class: large
     working_directory: ~/demo-react-native
 
     # use a --login shell so our "set Ruby version" command gets picked up for later steps
