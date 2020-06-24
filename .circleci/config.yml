@@ -148,6 +148,12 @@ jobs:
       - store_artifacts:
           path: ios/test-results
 
+  deploy:
+    docker:
+      - image: circleci/android:api-28-node8-alpha
+    steps:
+      - run: echo "deployed"
+
 workflows:
   version: 2
   node-android-ios:
@@ -159,3 +165,19 @@ workflows:
       - ios:
           requires:
             - node
+      - hold:
+          type: approval
+          requires:
+            - android
+            - ios
+          filters:
+            branches:
+              only: master
+              
+      - deploy:
+          requires:
+            - hold
+          filters:
+            branches:
+              only: master
+
