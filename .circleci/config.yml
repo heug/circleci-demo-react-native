@@ -33,7 +33,7 @@ jobs:
           environment:
             JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
             
-      - run: exit 1 #failing test
+#       - run: exit 1 #failing test
 
       - persist_to_workspace:
           root: ~/demo-react-native
